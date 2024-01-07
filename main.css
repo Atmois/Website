@@ -375,14 +375,14 @@ hr:before {
     align-items: center;
     width: 100%;
     min-height: 20rem;
-    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20viewBox%3D%220%200%20512%20512%22%20width%3D%22512%22%20height%3D%22512%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%3Cfilter%20id%3D%22noise%22%3E%20%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.875%22%20result%3D%22noise%22%20%2F%3E%20%3CfeColorMatrix%20type%3D%22matrix%22%20values%3D%220.0546875%200%200%200%200%200%200.0546875%200%200%200%200%200%200.0703125%200%200%200%200%200%200.34765625%200%22%20%2F%3E%20%3C%2Ffilter%3E%20%3Crect%20filter%3D%22url%28%23noise%29%22%20x%3D%220%22%20y%3D%220%22%20width%3D%22512%22%20height%3D%22512%22%20fill%3D%22transparent%22%20opacity%3D%221%22%20%2F%3E%3C%2Fsvg%3E'), linear-gradient(45deg, #2D3040 0%, #545669 84%);
     background-size: 512px, cover;
+    background-color: #151414;
     background-position: center, 0% 0%;
     background-repeat: repeat, repeat;
     box-shadow: 0rem 1rem 6.125rem 0rem rgba(24, 19, 38, 0.42);
     border-radius: 2rem;
-    border: 3px solid #D0ABFF; 
- }
+    border: 3px solid #D0ABFF;
+}
 
 #mainContainer:not(:first-child) {
     margin-top: 3rem !important;
@@ -528,15 +528,14 @@ body {
     min-height: 100vh;
     margin: 0;
     background: linear-gradient(163deg, #D0ABFF 9%, #ABC7FF 72%);
- }
- 
- .navBox {
+}
+
+.navBox {
     display: block;
     margin: auto;
-    border: 3px solid #D0ABFF; 
-    border-radius: 20px; 
+    border: 3px solid #D0ABFF;
+    border-radius: 20px;
     width: 90%;
     height: 90%;
     padding: 0;
- }
- 
+}
