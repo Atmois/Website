@@ -521,6 +521,14 @@ hr:before {
     margin-bottom: 1.5rem !important;
 }
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(163deg, #D0ABFF 9%, #ABC7FF 72%);
+}
 
 .navBox {
     display: block;
