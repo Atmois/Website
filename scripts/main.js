@@ -1,27 +1,27 @@
 // I have no idea how this works or how to improve it, it's just the Carrd generated code and ima just leave it
-(function () {
+(function() {
     on = addEventListener,
         off = removeEventListener,
-        $ = function (q) {
+        $ = function(q) {
             return document.querySelector(q)
         },
-        $$ = function (q) {
+        $$ = function(q) {
             return document.querySelectorAll(q)
         },
         $body = document.body,
         $inner = $('.inner'),
-        client = (function () {
+        client = (function() {
             var o = {
-                browser: 'other',
-                browserVersion: 0,
-                os: 'other',
-                osVersion: 0,
-                mobile: false,
-                canUse: null,
-                flags: {
-                    lsdUnits: false,
+                    browser: 'other',
+                    browserVersion: 0,
+                    os: 'other',
+                    osVersion: 0,
+                    mobile: false,
+                    canUse: null,
+                    flags: {
+                        lsdUnits: false,
+                    },
                 },
-            },
                 ua = navigator.userAgent,
                 browsers = [
                     ['firefox', /Firefox\/([0-9\.]+)/],
@@ -57,7 +57,7 @@
             }
             o.mobile = (o.os === 'android' || o.os === 'ios');
             var _canUse = document.createElement('div');
-            o.canUse = function (property, value) {
+            o.canUse = function(property, value) {
                 var style = _canUse.style;
                 if (!(property in style)) return false;
                 if (value !== undefined) {
@@ -70,17 +70,17 @@
             return o;
         }());
 }()),
-    trigger = function (t) {
+trigger = function(t) {
         dispatchEvent(new Event(t));
     },
-    cssRules = function (selectorText) {
+    cssRules = function(selectorText) {
         var ss = document.styleSheets,
             a = [],
-            f = function (s) {
+            f = function(s) {
                 var r = s.cssRules,
                     i;
                 for (i = 0; i < r.length; i++) {
-                    if (r[i] instanceof CSSMediaRule && matchMedia(r[i].conditionText).matches) (f)(r[i]);
+                    if (r[i] instanceof CSSMediaRule && matchMedia(r[i].conditionText).matches)(f)(r[i]);
                     else if (r[i] instanceof CSSStyleRule && r[i].selectorText == selectorText) a.push(r[i]);
                 }
             },
@@ -88,7 +88,7 @@
         for (i = 0; i < ss.length; i++) f(ss[i]);
         return a;
     },
-    thisHash = function () {
+    thisHash = function() {
         var h = location.hash ? location.hash.substring(1) : null,
             a;
         if (!h) return null;
@@ -102,7 +102,7 @@
         if (typeof h == 'string') h = h.toLowerCase();
         return h;
     },
-    scrollToElement = function (e, style, duration) {
+    scrollToElement = function(e, style, duration) {
         var y, cy, dy, start, easing, offset, f;
         if (!e) y = 0;
         else {
@@ -133,17 +133,17 @@
         dy = y - cy;
         switch (style) {
             case 'linear':
-                easing = function (t) {
+                easing = function(t) {
                     return t
                 };
                 break;
             case 'smooth':
-                easing = function (t) {
+                easing = function(t) {
                     return t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
                 };
                 break;
         }
-        f = function () {
+        f = function() {
             var t = Date.now() - start;
             if (t >= duration) window.scroll(0, y);
             else {
@@ -153,10 +153,10 @@
         };
         f();
     },
-    scrollToTop = function () {
+    scrollToTop = function() {
         scrollToElement(null);
     },
-    loadElements = function (parent) {
+    loadElements = function(parent) {
         var a, e, x, i;
         a = parent.querySelectorAll('iframe[data-src]:not([data-src=""])');
         for (i = 0; i < a.length; i++) {
@@ -179,7 +179,7 @@
                 break;
         }
     },
-    unloadElements = function (parent) {
+    unloadElements = function(parent) {
         var a, e, x, i;
         a = parent.querySelectorAll('iframe[data-src=""]');
         for (i = 0; i < a.length; i++) {
@@ -196,41 +196,50 @@
         if (e) e.blur();
     };
 window._scrollToTop = scrollToTop;
-var thisUrl = function () {
+var thisUrl = function() {
     return window.location.href.replace(window.location.search, '').replace(/#$/, '');
 };
+var getVar = function(name) {
+    var a = window.location.search.substring(1).split('&'),
+        b, k;
+    for (k in a) {
+        b = a[k].split('=');
+        if (b[0] == name) return b[1];
+    }
+    return null;
+};
 var errors = {
-    handle: function (handler) {
-        window.onerror = function (message, url, line, column, error) {
+    handle: function(handler) {
+        window.onerror = function(message, url, line, column, error) {
             (handler)(error.message);
             return true;
         };
     },
-    unhandle: function () {
+    unhandle: function() {
         window.onerror = null;
     }
 };
-var loadHandler = function () {
-    setTimeout(function () {
+var loadHandler = function() {
+    setTimeout(function() {
         $body.classList.remove('is-loading');
         $body.classList.add('is-playing');
-        setTimeout(function () {
+        setTimeout(function() {
             $body.classList.remove('is-playing');
             $body.classList.add('is-ready');
         }, 1000);
     }, 100);
 };
 on('load', loadHandler);
-(function () {
+(function() {
     var initialSection, initialScrollPoint, initialId, header, footer, name, hideHeader, hideFooter, disableAutoScroll, h, e, ee, k, locked = false,
-        scrollPointParent = function (target) {
+        scrollPointParent = function(target) {
             while (target) {
                 if (target.parentElement && target.parentElement.tagName == 'SECTION') break;
                 target = target.parentElement;
             }
             return target;
         },
-        scrollPointSpeed = function (scrollPoint) {
+        scrollPointSpeed = function(scrollPoint) {
             let x = parseInt(scrollPoint.dataset.scrollSpeed);
             switch (x) {
                 case 5:
@@ -248,7 +257,101 @@ on('load', loadHandler);
             }
             return 750;
         },
-        resetSectionChangeElements = function (section) {
+        doNextScrollPoint = function(event) {
+            var e, target, id;
+            event.preventDefault();
+            event.stopPropagation();
+            e = scrollPointParent(event.target);
+            if (!e) return;
+            while (e && e.nextElementSibling) {
+                e = e.nextElementSibling;
+                if (e.dataset.scrollId) {
+                    target = e;
+                    id = e.dataset.scrollId;
+                    break;
+                }
+            }
+            if (!target || !id) return;
+            if (target.dataset.scrollInvisible == '1') scrollToElement(target, 'smooth', scrollPointSpeed(target));
+            else location.href = '#' + id;
+        },
+        doPreviousScrollPoint = function(e) {
+            var e, target, id;
+            event.preventDefault();
+            event.stopPropagation();
+            e = scrollPointParent(event.target);
+            if (!e) return;
+            while (e && e.previousElementSibling) {
+                e = e.previousElementSibling;
+                if (e.dataset.scrollId) {
+                    target = e;
+                    id = e.dataset.scrollId;
+                    break;
+                }
+            }
+            if (!target || !id) return;
+            if (target.dataset.scrollInvisible == '1') scrollToElement(target, 'smooth', scrollPointSpeed(target));
+            else location.href = '#' + id;
+        },
+        doFirstScrollPoint = function(e) {
+            var e, target, id;
+            event.preventDefault();
+            event.stopPropagation();
+            e = scrollPointParent(event.target);
+            if (!e) return;
+            while (e && e.previousElementSibling) {
+                e = e.previousElementSibling;
+                if (e.dataset.scrollId) {
+                    target = e;
+                    id = e.dataset.scrollId;
+                }
+            }
+            if (!target || !id) return;
+            if (target.dataset.scrollInvisible == '1') scrollToElement(target, 'smooth', scrollPointSpeed(target));
+            else location.href = '#' + id;
+        },
+        doLastScrollPoint = function(e) {
+            var e, target, id;
+            event.preventDefault();
+            event.stopPropagation();
+            e = scrollPointParent(event.target);
+            if (!e) return;
+            while (e && e.nextElementSibling) {
+                e = e.nextElementSibling;
+                if (e.dataset.scrollId) {
+                    target = e;
+                    id = e.dataset.scrollId;
+                }
+            }
+            if (!target || !id) return;
+            if (target.dataset.scrollInvisible == '1') scrollToElement(target, 'smooth', scrollPointSpeed(target));
+            else location.href = '#' + id;
+        },
+        doNextSection = function() {
+            var section;
+            section = $('#main > .inner > section.active').nextElementSibling;
+            if (!section || section.tagName != 'SECTION') return;
+            location.href = '#' + section.id.replace(/-section$/, '');
+        },
+        doPreviousSection = function() {
+            var section;
+            section = $('#main > .inner > section.active').previousElementSibling;
+            if (!section || section.tagName != 'SECTION') return;
+            location.href = '#' + (section.matches(':first-child') ? '' : section.id.replace(/-section$/, ''));
+        },
+        doFirstSection = function() {
+            var section;
+            section = $('#main > .inner > section:first-of-type');
+            if (!section || section.tagName != 'SECTION') return;
+            location.href = '#' + section.id.replace(/-section$/, '');
+        },
+        doLastSection = function() {
+            var section;
+            section = $('#main > .inner > section:last-of-type');
+            if (!section || section.tagName != 'SECTION') return;
+            location.href = '#' + section.id.replace(/-section$/, '');
+        },
+        resetSectionChangeElements = function(section) {
             var ee, e, x;
             ee = section.querySelectorAll('[data-reset-on-section-change="1"]');
             for (e of ee) {
@@ -262,8 +365,8 @@ on('load', loadHandler);
                 }
             }
         },
-        activateSection = function (section, scrollPoint) {
-        
+        activateSection = function(section, scrollPoint) {
+            var sectionHeight, currentSection, currentSectionHeight, name, hideHeader, hideFooter, disableAutoScroll, ee, k;
             if (!section.classList.contains('inactive')) {
                 name = (section ? section.id.replace(/-section$/, '') : null);
                 disableAutoScroll = name ? ((name in sections) && ('disableAutoScroll' in sections[name]) && sections[name].disableAutoScroll) : false;
@@ -310,7 +413,15 @@ on('load', loadHandler);
             }
         },
         sections = {};
-    window._scrollToTop = function () {
+    window._nextScrollPoint = doNextScrollPoint;
+    window._previousScrollPoint = doPreviousScrollPoint;
+    window._firstScrollPoint = doFirstScrollPoint;
+    window._lastScrollPoint = doLastScrollPoint;
+    window._nextSection = doNextSection;
+    window._previousSection = doPreviousSection;
+    window._firstSection = doFirstSection;
+    window._lastSection = doLastSection;
+    window._scrollToTop = function() {
         var section, id;
         scrollToElement(null);
         if (!!(section = $('section.active'))) {
@@ -361,10 +472,10 @@ on('load', loadHandler);
     if (header) loadElements(header);
     if (footer) loadElements(footer);
     if (!disableAutoScroll) scrollToElement(null, 'instant');
-    on('load', function () {
+    on('load', function() {
         if (initialScrollPoint) scrollToElement(initialScrollPoint, 'instant');
     });
-    on('hashchange', function (event) {
+    on('hashchange', function(event) {
         var section, scrollPoint, h, e;
         if (locked) return false;
         h = thisHash();
@@ -384,7 +495,7 @@ on('load', loadHandler);
         activateSection(section, scrollPoint);
         return false;
     });
-    on('click', function (event) {
+    on('click', function(event) {
         var t = event.target,
             tagName = t.tagName.toUpperCase(),
             scrollPoint, section;
@@ -420,9 +531,59 @@ style = document.createElement('style');
 style.appendChild(document.createTextNode(''));
 document.head.appendChild(style);
 sheet = style.sheet;
+if (client.mobile) {
+    (function() {
+        if (client.flags.lsdUnits) {
+            document.documentElement.style.setProperty('--viewport-height', '100svh');
+            document.documentElement.style.setProperty('--background-height', '100lvh');
+        } else {
+            var f = function() {
+                document.documentElement.style.setProperty('--viewport-height', window.innerHeight + 'px');
+                document.documentElement.style.setProperty('--background-height', (window.innerHeight + 250) + 'px');
+            };
+            on('load', f);
+            on('orientationchange', function() {
+                setTimeout(function() {
+                    (f)();
+                }, 100);
+            });
+        }
+    })();
+}
+if (client.os == 'android') {
+    (function() {
+        sheet.insertRule('body::after { }', 0);
+        rule = sheet.cssRules[0];
+        var f = function() {
+            rule.style.cssText = 'height: ' + (Math.max(screen.width, screen.height)) + 'px';
+        };
+        on('load', f);
+        on('orientationchange', f);
+        on('touchmove', f);
+    })();
+    $body.classList.add('is-touch');
+} else if (client.os == 'ios') {
+    if (client.osVersion <= 11)(function() {
+        sheet.insertRule('body::after { }', 0);
+        rule = sheet.cssRules[0];
+        rule.style.cssText = '-webkit-transform: scale(1.0)';
+    })();
+    if (client.osVersion <= 11)(function() {
+        sheet.insertRule('body.ios-focus-fix::before { }', 0);
+        rule = sheet.cssRules[0];
+        rule.style.cssText = 'height: calc(100% + 60px)';
+        on('focus', function(event) {
+            $body.classList.add('ios-focus-fix');
+        }, true);
+        on('blur', function(event) {
+            $body.classList.remove('ios-focus-fix');
+        }, true);
+    })();
+    $body.classList.add('is-touch');
+}
 var scrollEvents = {
     items: [],
-    add: function (o) {
+    add: function(o) {
         this.items.push({
             element: o.element,
             triggerElement: (('triggerElement' in o && o.triggerElement) ? o.triggerElement : o.element),
@@ -434,7 +595,7 @@ var scrollEvents = {
             state: false,
         });
     },
-    handler: function () {
+    handler: function() {
         var height, top, bottom, scrollPad;
         if (client.os == 'ios') {
             height = document.documentElement.clientHeight;
@@ -447,9 +608,18 @@ var scrollEvents = {
             bottom = top + height;
             scrollPad = 0;
         }
-        scrollEvents.items.forEach(function (item) {
+        scrollEvents.items.forEach(function(item) {
             var bcr, elementTop, elementBottom, state, a, b;
-
+            if (!item.enter && !item.leave) return true;
+            if (!item.triggerElement) return true;
+            if (item.triggerElement.offsetParent === null) {
+                if (item.state == true && item.leave) {
+                    item.state = false;
+                    (item.leave).apply(item.element);
+                    if (!item.enter) item.leave = null;
+                }
+                return true;
+            }
             bcr = item.triggerElement.getBoundingClientRect();
             elementTop = top + Math.floor(bcr.top);
             elementBottom = elementTop + bcr.height;
@@ -491,7 +661,7 @@ var scrollEvents = {
             }
         });
     },
-    init: function () {
+    init: function() {
         on('load', this.handler);
         on('resize', this.handler);
         on('scroll', this.handler);
@@ -502,20 +672,20 @@ scrollEvents.init();
 var onvisible = {
     effects: {
         'fade-left': {
-            transition: function (speed, delay) {
+            transition: function(speed, delay) {
                 return 'opacity ' + speed + 's ease' + (delay ? ' ' + delay + 's' : '') + ', ' + 'transform ' + speed + 's ease' + (delay ? ' ' + delay + 's' : '');
             },
-            rewind: function (intensity) {
+            rewind: function(intensity) {
                 this.style.opacity = 0;
                 this.style.transform = 'translateX(' + (1.5 * intensity) + 'rem)';
             },
-            play: function () {
+            play: function() {
                 this.style.opacity = 1;
                 this.style.transform = 'none';
             },
         },
     },
-    add: function (selector, settings) {
+    add: function(selector, settings) {
         var style = settings.style in this.effects ? settings.style : 'fade',
             speed = parseInt('speed' in settings ? settings.speed : 1000) / 1000,
             intensity = ((parseInt('intensity' in settings ? settings.intensity : 5) / 10) * 1.75) + 0.25,
@@ -526,14 +696,14 @@ var onvisible = {
             state = 'state' in settings ? settings.state : null,
             effect = this.effects[style];
         if ('CARRD_DISABLE_ANIMATION' in window) {
-            if (style == 'fade-in-background') $$(selector).forEach(function (e) {
+            if (style == 'fade-in-background') $$(selector).forEach(function(e) {
                 e.style.setProperty('--onvisible-background-color', 'rgba(0,0,0,0.001)');
             });
             return;
         }
-        $$(selector).forEach(function (e) {
+        $$(selector).forEach(function(e) {
             var children = (stagger !== false) ? e.querySelectorAll(':scope > li, :scope ul > li') : null,
-                enter = function (staggerDelay = 0) {
+                enter = function(staggerDelay = 0) {
                     var _this = this,
                         transitionOrig;
                     if (effect.target) _this = this.querySelector(effect.target);
@@ -543,12 +713,12 @@ var onvisible = {
                         _this.style.transition = effect.transition(speed, delay + staggerDelay);
                     } else effect.transition.apply(_this, [speed, delay + staggerDelay]);
                     effect.play.apply(_this, [intensity, !!children]);
-                    if (!effect.custom) setTimeout(function () {
+                    if (!effect.custom) setTimeout(function() {
                         _this.style.removeProperty('backface-visibility');
                         _this.style.transition = transitionOrig;
                     }, (speed + delay + staggerDelay) * 1000 * 2);
                 },
-                leave = function () {
+                leave = function() {
                     var _this = this,
                         transitionOrig;
                     if (effect.target) _this = this.querySelector(effect.target);
@@ -558,7 +728,7 @@ var onvisible = {
                         _this.style.transition = effect.transition(speed);
                     } else effect.transition.apply(_this, [speed]);
                     effect.rewind.apply(_this, [intensity, !!children]);
-                    if (!effect.custom) setTimeout(function () {
+                    if (!effect.custom) setTimeout(function() {
                         _this.style.removeProperty('backface-visibility');
                         _this.style.transition = transitionOrig;
                     }, speed * 1000 * 2);
@@ -566,7 +736,7 @@ var onvisible = {
                 targetElement, triggerElement;
             if (effect.target) targetElement = e.querySelector(effect.target);
             else targetElement = e;
-            if (children) children.forEach(function (targetElement) {
+            if (children) children.forEach(function(targetElement) {
                 effect.rewind.apply(targetElement, [intensity, true]);
             });
             else effect.rewind.apply(targetElement, [intensity]);
@@ -581,9 +751,9 @@ var onvisible = {
                 element: e,
                 triggerElement: triggerElement,
                 initialState: state,
-                enter: children ? function () {
+                enter: children ? function() {
                     var staggerDelay = 0,
-                        childHandler = function (e) {
+                        childHandler = function(e) {
                             enter.apply(e, [staggerDelay]);
                             staggerDelay += stagger;
                         },
@@ -597,7 +767,7 @@ var onvisible = {
                                 a.reverse();
                                 break;
                             case 'random':
-                                a.sort(function () {
+                                a.sort(function() {
                                     return Math.random() - 0.5;
                                 });
                                 break;
@@ -605,8 +775,8 @@ var onvisible = {
                         a.forEach(childHandler);
                     }
                 } : enter,
-                leave: (replay ? (children ? function () {
-                    children.forEach(function (e) {
+                leave: (replay ? (children ? function() {
+                    children.forEach(function(e) {
                         leave.apply(e);
                     });
                 } : leave) : null),
