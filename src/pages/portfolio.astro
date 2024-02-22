@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/layout.astro";
+import Card from "../components/card.astro";
+import "../styles/main.css";
+---
+
+<Layout title="Atmois">
+  <ul role="list" class="link-card-grid">
+    <br>
+    <div class="grid grid-cols-2 gap-4">
+      <Card
+        href="https://github.com/Atmois/Hangman"
+        title="Hangman"
+        body="A massivly overcomplicated hangman game I made with a customaisable word list, login system and leaderboard."
+      />
+      <Card
+        href="https://github.com/Atmois/Calculator"
+        title="C++ Calculator"
+        body="A simple calculator in C++ I made to practise the language."
+      />
+      <Card
+        href="https://github.com/Atmois/CPP-Demo"
+        title="C++ Demo"
+        body="A demo C++ project to show some basic things in C++ from a good tutorial I found."
+      />
+      <Card href="https://atmois.com/" title="My Website" body="The website which you are on!" />
+     
+      <Card href="https://ko-fi.com/atmois/shop" title="Arrangements" body="Some song arrangments I've made!" />
+    </div>
+  </ul>
+</Layout>

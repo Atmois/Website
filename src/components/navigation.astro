@@ -1,0 +1,27 @@
+---
+interface Link {
+  href: string;
+  text: string;
+}
+
+const links = [
+  { href: "/", text: "Home" },
+  { href: "/about", text: "About" },
+  { href: "/portfolio", text: "Portfolio" },
+  { href: "/links", text: "Links" },
+] satisfies Link[];
+
+import "../styles/main.css";
+---
+
+<nav id="mainText" class="flex gap-3" aria-label="navigation-links">
+  {
+    links.map(({ href, text }) => {
+      return (
+        <a href={href} class="text-ctp-pink underline-offset-4">
+          {text}
+        </a>
+      );
+    })
+  }
+</nav>

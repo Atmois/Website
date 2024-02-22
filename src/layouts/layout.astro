@@ -1,0 +1,63 @@
+---
+import "../styles/main.css";
+import Header from "../components/header.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Atmois</title>
+    <meta name="title" content="Atmois" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://atmois.com" />
+    <meta property="og:title" content="Atmois" />
+    <meta property="og:image" content="/images/thumbnail.jpg" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://atmois.com" />
+    <meta property="twitter:title" content="Atmois" />
+    <meta property="twitter:image" content="/images/thumbnail.jpg" />
+
+    <link rel="icon" type="image/x-icon" href="/images/thumbnail.jpg" />
+  </head>
+
+  <div id="backgroundLayer" style="position: absolute; top:  0; left:  0; right:  0; bottom:  0; z-index: -1;"></div>
+  <main class="pt-56 pb-56 pl-32 pr-32">
+    <div
+      id="mainContainer"
+      class="container default"
+      style="opacity:   1; transform: none; transition: opacity   1s ease   0s, transform   1s ease   0s;"
+    >
+      <Header />
+      <slot />
+    </div>
+  </main>
+  <script src="../scripts/background.js"></script>
+  <style is:global>
+    :root {
+      --accent: 136, 58, 234;
+      --accent-light: 224, 204, 250;
+      --accent-dark: 49, 10, 101;
+      --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
+    }
+    html {
+      font-family: system-ui, sans-serif;
+      background: #13151a;
+      background-size: 224px;
+    }
+    code {
+      font-family:
+        Menlo,
+        Monaco,
+        Lucida Console,
+        Liberation Mono,
+        DejaVu Sans Mono,
+        Bitstream Vera Sans Mono,
+        Courier New,
+        monospace;
+    }
+  </style>
+
+
+</html>

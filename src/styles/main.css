@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'AtkinsonHyperlegible';
+    src: url('../AtkinsonHyperlegible-Regular.ttf') format('woff2'),
+        url('../AtkinsonHyperlegible-Regular.ttf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+main {
+    margin: auto;
+    padding: 1rem;
+    width: 900px;
+    max-width: calc(100% - 2rem);
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+body {
+    font-family: 'AtkinsonHyperlegible', fallback, sans-serif;
+}
+
+#mainText {
+    color: #D0ABFF;
+    letter-spacing: -0.025rem;
+    font-size: 1em;
+    line-height: 1.75;
+    font-weight: 400;
+}
+
+#mainText a {
+    text-decoration: none;
+}
+
+#mainText a:hover {
+    color: #cfabff8f;
+    text-decoration: underline;
+}
+
+#mainText span.p:nth-child(n + 2) {
+    margin-top: 1rem;
+}
+
+.subText {
+    color: #7f849c;
+    line-height: 1;
+    font-style: italic;
+}
+
+.headerText {
+    color: #cdd6f4;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+.bodyText {
+    color: #cdd6f4;
+}
+
+.text-ctp-overlay1 {
+    --tw-text-opacity: 1;
+    color: rgba(var(--ctp-overlay1), var(--tw-text-opacity))
+}
+
+.flex-col {
+    flex-direction: column
+}
+
+.active {
+    text-decoration: underline;
+}
+
+#mainContainer {
+    background-color: #151414;
+    border-radius: 2rem;
+    border: 3px solid #D0ABFF;
+    padding:  3rem;
+}
+
