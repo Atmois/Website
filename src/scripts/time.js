@@ -1,23 +1,23 @@
 // Code from https://claym1xprofile.neocities.org
 let currentTimeOffset = 0;
+let summerTime = true; 
 
 function padZero(num) {
     return num < 10 ? '0' + num : num;
 }
 
-function setTime(offset) {
+function setTime() {
     let date = new Date();
-    let utcDate = new Date(date.getTime() + (date.getTimezoneOffset() * 60000));
-    let localDate = new Date(utcDate.getTime() + (3600000 * offset));
-
-    let hours = localDate.getUTCHours();
-    let minutes = localDate.getUTCMinutes();
-
+    let hours = date.getUTCHours();
+    let minutes = date.getUTCMinutes();
+    if (summerTime) {
+        hours = (hours + 1) % 24; 
+    }
     let timeString = `${padZero(hours)}:${padZero(minutes)}`;
     document.getElementById("localTime").innerHTML = timeString;
 }
 
-window.onload = function() {
+window.onload = function () {
     setTime(currentTimeOffset);
     setInterval(() => setTime(currentTimeOffset), 10000);
 };
