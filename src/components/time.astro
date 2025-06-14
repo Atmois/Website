@@ -1,0 +1,26 @@
+---
+// Time script developed from https://claym1x.com
+---
+<span id="localTime">00:00</span>
+<script type="module">
+  let currentTimeOffset = 0;
+  let summerTime = false;
+
+  function padZero(num) {
+      return num < 10 ? '0' + num : num;
+  }
+
+  function setTime(offset) {
+      const date = new Date();
+      let hours = date.getUTCHours() + offset;
+      let minutes = date.getUTCMinutes();
+      if (summerTime) {
+          hours = (hours + 1) % 24;
+      }
+      const timeString = `${padZero(hours % 24)}:${padZero(minutes)}`;
+      document.getElementById('localTime').textContent = timeString;
+  }
+
+  setTime(currentTimeOffset);
+  setInterval(() => setTime(currentTimeOffset), 10000);
+</script>

@@ -1,0 +1,26 @@
+---
+interface Link {
+  href: string;
+  text: string;
+}
+
+const links = [
+  { href: "/", text: "Home" },
+  { href: "/about", text: "About" },
+  { href: "/projects", text: "Projects" },
+  { href: "/links", text: "Links" },
+] satisfies Link[];
+
+import "../styles/styles.css";
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="mainText navbar" aria-label="navigation-links">
+  {
+    links.map(({ href, text }) => {
+      const active = currentPath === href ? "active" : "";
+      return <a class={active} href={href}>{text}</a>;
+    })
+  }
+</nav>
