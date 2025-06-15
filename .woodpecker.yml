@@ -8,7 +8,6 @@ steps:
       - npm install -g pnpm
       - pnpm i
       - pnpm run build
-      - cp .domains dist/.domains
   publish:
     image: codeberg.org/xfix/plugin-codeberg-pages-deploy:1
     when:
