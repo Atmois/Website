@@ -1,12 +1,11 @@
 steps:
   build:
-    image: node:22-alpine
+    image: node:22
     when:
       event: push
       branch: main
     commands:
-      - corepack enable
-      - corepack prepare pnpm@latest --activate
+      - npm install -g pnpm
       - pnpm i
       - pnpm run build
   publish:
