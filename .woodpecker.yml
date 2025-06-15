@@ -5,6 +5,8 @@ steps:
       event: push
       branch: main
     commands:
+      - corepack enable
+      - corepack prepare pnpm@latest --activate
       - pnpm i
       - pnpm run build
   publish:
