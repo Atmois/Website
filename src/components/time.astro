@@ -2,10 +2,7 @@
 // Code adapted from https://claym1x.com
 ---
 <span id="localTime">00:00</span>
-<script type="module" client:load>
-    function padZero(num) {
-        return num < 10 ? '0' + num : num;
-    }
+<script type="module" is:inline>
     function setLondonTime() {
         const now = new Date();
         const options = {
