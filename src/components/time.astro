@@ -1,26 +1,22 @@
 ---
-// Time script developed from https://claym1x.com
+// Code adapted from https://claym1x.com
 ---
 <span id="localTime">00:00</span>
-<script type="module">
-  let currentTimeOffset = 0;
-  let summerTime = false;
-
-  function padZero(num) {
-      return num < 10 ? '0' + num : num;
-  }
-
-  function setTime(offset) {
-      const date = new Date();
-      let hours = date.getUTCHours() + offset;
-      let minutes = date.getUTCMinutes();
-      if (summerTime) {
-          hours = (hours + 1) % 24;
-      }
-      const timeString = `${padZero(hours % 24)}:${padZero(minutes)}`;
-      document.getElementById('localTime').textContent = timeString;
-  }
-
-  setTime(currentTimeOffset);
-  setInterval(() => setTime(currentTimeOffset), 10000);
+<script type="module" client:load>
+    function padZero(num) {
+        return num < 10 ? '0' + num : num;
+    }
+    function setLondonTime() {
+        const now = new Date();
+        const options = {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false,
+            timeZone: 'Europe/London'
+        };
+        const timeString = new Intl.DateTimeFormat('en-GB', options).format(now);
+        document.getElementById("localTime").innerHTML = timeString;
+    }
+    setLondonTime();
+    setInterval(setLondonTime, 10000);
 </script>
