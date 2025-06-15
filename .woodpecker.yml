@@ -1,0 +1,20 @@
+steps:
+  build:
+    image: node:22-alpine
+    when:
+      event: push
+      branch: main
+    commands:
+      - pnpm i
+      - pnpm run build
+  publish:
+    image: codeberg.org/xfix/plugin-codeberg-pages-deploy:1
+    when:
+      event: push
+      branch: main
+    settings:
+      folder: dist
+      ssh_key:
+        from_secret: ssh_key
+      git_config_name: Atmois
+      git_config_email: info@atmois.com
