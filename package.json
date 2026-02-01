@@ -1,5 +1,5 @@
 {
-  "name": "atmoiswebsite",
+  "name": "atmois-website",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
@@ -10,7 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.18"
+    "astro": "^5.17.1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
