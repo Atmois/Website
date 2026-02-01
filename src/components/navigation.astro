@@ -20,7 +20,11 @@ const currentPath = Astro.url.pathname;
   {
     links.map(({ href, text }) => {
       const active = currentPath === href ? "active" : "";
-      return <a class={active} href={href}>{text}</a>;
+      return (
+        <a class={active} href={href}>
+          {text}
+        </a>
+      );
     })
   }
 </nav>
