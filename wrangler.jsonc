@@ -2,9 +2,6 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "website",
   "compatibility_date": "2026-06-18",
-  "observability": {
-    "enabled": true
-  },
   "main": "dist/_worker.js/index.js",
   "compatibility_flags": [
     "global_fetch_strictly_public",
@@ -13,5 +10,21 @@
   "assets": {
     "binding": "ASSETS",
     "directory": "dist"
+  },
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    {
+      "pattern": "atmois.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.atmois.com",
+      "custom_domain": true
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
   }
 }

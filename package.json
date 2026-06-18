@@ -6,9 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
-    "preview": "pnpm run build && wrangler dev",
-    "astro": "astro",
-    "deploy": "pnpm run build && wrangler deploy"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/cloudflare": "12",
