@@ -1,0 +1,30 @@
+---
+import "../styles/styles.css";
+import Header from "../components/header.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="../scripts/background.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="title" content="Atmois" />
+    <meta name="description" content="Atmois Website" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://atmois.com" />
+    <meta property="og:title" content="Atmois" />
+    <meta property="og:image" content="/images/thumbnail.jpg" />
+    <link rel="icon" type="image/x-icon" href="/images/thumbnail.jpg" />
+  </head>
+
+  <body>
+    <div id="loadingBackground"></div>
+    <main>
+      <div class="mainContainer">
+        <Header />
+        <slot />
+      </div>
+    </main>
+  </body>
+</html>

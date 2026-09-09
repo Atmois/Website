@@ -1,0 +1,33 @@
+---
+import Navigation from "./navigation.astro";
+import "../styles/styles.css";
+---
+
+<header>
+  <nav class="navigation-container">
+    <Navigation />
+  </nav>
+  <div class="avatar-container">
+    <img
+      src="/images/avatar.jpg"
+      class="avatar"
+      alt="My avatar"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <div>
+    <div class="inlineContainer">
+      <h1 class="headerText">Atmois</h1>
+      <img
+        src="/images/pride.png"
+        class="inlineImg"
+        alt="Pride flag"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <p class="subText">Fucking around and finding out.</p>
+  </div>
+  <br />
+</header>
